@@ -1,4 +1,4 @@
-Object helper methods.  
+Retrieves the property value from an object or nested objects. Caches all key chains to avoid garbage and maintain performance.  
 
 ---  
 
@@ -15,15 +15,19 @@ let obj = {
 		},
 		{
 			three: true
+		},
+		{
+			three: true
 		}
 	]
 };
 ```
 
-### get-property
-trim(str) x 20,108,670 ops/sec  
-trim(str, pattern) x 30,210,867 ops/sec  
-String.trim() x 12,210,630 ops/sec  
+### @chickendinosaur/object-get-property
+getProperty(obj, 'one.2.three') x 28,143,940 ops/sec  
+
+### lodash.get
+lodashGet(obj, 'one.2.three') x 1,278,243 ops/sec  
 
 ---  
 
@@ -33,15 +37,18 @@ String.trim() x 12,210,630 ops/sec
 
 #### npm  
 
-npm install @chickendinosaur/object-utils
+npm install @chickendinosaur/object-get-property
 
 ## Usage
 
 ```javascript
-const getObjectProperty = require('@chickendinosaur/object-utils/get-property');
+const getObjectProperty = require('@chickendinosaur/object-get-property');
 
 let obj = {
 	one: [
+		{
+			three: true
+		},
 		{
 			three: true
 		},

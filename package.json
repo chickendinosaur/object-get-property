@@ -1,8 +1,8 @@
 {
-  "name": "@chickendinosaur/string-utils",
+  "name": "@chickendinosaur/object-get-property",
   "version": "1.0.0",
-  "description": "Object helper methods.",
-  "main": "lib/index.js",
+  "description": "Retrieves the property value from an object or nested objects.",
+  "main": "lib/get-property.js",
   "files": [
     "lib/"
   ],

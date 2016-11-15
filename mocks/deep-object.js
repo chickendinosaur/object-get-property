@@ -7,6 +7,9 @@ module.exports = {
 		},
 		{
 			three: true
+		},
+		{
+			three: true
 		}
 	]
 };
