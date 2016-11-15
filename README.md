@@ -4,6 +4,16 @@ Retrieves the property value from an object or nested objects. Caches all key ch
 
 # Specs  
 
+## Overhead  
+
+### @chickendinosaur/object-get-property
+minified: 260 bytes  
+gzipped: 212 bytes  
+
+### lodash.get
+minified: 6138 bytes  
+gzipped: 2167 bytes  
+
 ## Performance  
 
 Test object: 
