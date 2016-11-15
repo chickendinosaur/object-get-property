@@ -1,0 +1,39 @@
+{
+  "name": "@chickendinosaur/string-utils",
+  "version": "1.0.0",
+  "description": "Object helper methods.",
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "keywords": [
+    "objects",
+    "utilities",
+    "utils",
+    "manipulation",
+    "get-property",
+    "getProperty",
+    "get-object-property",
+    "getObjectProperty"
+  ],
+  "scripts": {
+    "benchmark": "npm run test && npm run benchmark-get-property",
+    "benchmark-get-property": "node benchmark/get-property.js",
+    "build": "npm run clean && cp -rf src/* lib/",
+    "clean": "rm -rf lib/*",
+    "prepublish": "npm run test",
+    "test": "npm run build && tape test/unit/**/*.js | tap-spec"
+  },
+  "author": {
+    "name": "John Pittman",
+    "email": "john@chickendinosaur.com",
+    "url": "https://github.com/chickendinosaur"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "benchmark": "^2.1.2",
+    "lodash.get": "^4.4.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  }
+}
