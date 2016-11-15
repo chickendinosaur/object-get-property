@@ -1,4 +1,4 @@
-Retrieves the property value from an object or nested objects. Caches all key chains to avoid garbage and maintain performance.  
+Made in response to the amount that I was using lodash.get to update data in a project and needed a better solution. Caches all key chains to avoid garbage and maintain performance.  
 
 ---  
 
