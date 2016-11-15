@@ -27,7 +27,7 @@ let obj = {
 getProperty(obj, 'one.2.three') x 28,143,940 ops/sec  
 
 ### lodash.get
-lodashGet(obj, 'one.2.three') x 1,278,243 ops/sec  
+lodashGet(obj, 'one[2].three') x 1,278,243 ops/sec  
 
 ---  
 

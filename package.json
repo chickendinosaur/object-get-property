@@ -1,6 +1,6 @@
 {
   "name": "@chickendinosaur/object-get-property",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Retrieves the property value from an object or nested objects.",
   "main": "lib/get-property.js",
   "files": [

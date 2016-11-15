@@ -20,7 +20,7 @@ suite
 	.add(`getProperty(obj, 'one.2.three')`, function () {
 		getObjectProperty(mockObject, 'one.2.three');
 	})
-	.add(`lodashGet(obj, 'one.2.three')`, function () {
+	.add(`lodashGet(obj, 'one[2].three')`, function () {
 		lodashGet(mockObject, 'one[2].three');
 	})
 	.on('cycle', function (event) {
