@@ -62,6 +62,7 @@ let obj = {
 
 // Trim a custom char.
 getObjectProperty(obj, 'one.2.three');
+getObjectProperty(obj, 'one[2].three');
 
 // Result
 
