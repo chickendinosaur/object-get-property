@@ -9,8 +9,8 @@ Passing false as the 3rd param will force no cache.
 ## Overhead  
 
 ### @chickendinosaur/object-get-property
-minified: 260 bytes  
-gzipped: 212 bytes  
+minified: 1004 bytes  
+gzipped: 529 bytes  
 
 ### lodash.get
 minified: 6138 bytes  
@@ -30,6 +30,7 @@ getProperty(arrayChain, 'one[2].three', false) x 1,777,284 ops/sec
 lodashGet(objChain, 'one.2.three') x 1,134,805 ops/sec  
 lodashGet(arrayChain, 'one.2.three') x 1,274,468 ops/sec  
 lodashGet(arrayChain, 'one[2].three') x 1,184,711 ops/sec  
+
 ---  
 
 # Getting Started  
