@@ -1,15 +1,22 @@
 'use strict';
 
 module.exports = {
-	one: [
-		{
-			three: true
-		},
-		{
-			three: true
-		},
-		{
-			three: true
+	arrayChain: {
+		one: [
+			{
+				three: true
+			}, {
+				three: true
+			}, {
+				three: true
+			}
+		]
+	},
+	objChain: {
+		one: {
+			'2': {
+				three: true
+			}
 		}
-	]
+	}
 };

@@ -2,27 +2,26 @@
   "name": "@chickendinosaur/object-get-property",
   "version": "1.0.2",
   "description": "Retrieves the property value from an object or nested objects.",
-  "main": "lib/get-property.js",
+  "main": "get-property.js",
   "files": [
-    "lib/"
+    "**/*.js"
   ],
   "keywords": [
+    "get-object-property",
+    "get-property",
+    "getObjectProperty",
+    "getProperty",
+    "manipulation",
     "objects",
     "utilities",
-    "utils",
-    "manipulation",
-    "get-property",
-    "getProperty",
-    "get-object-property",
-    "getObjectProperty"
+    "utils"
   ],
   "scripts": {
-    "benchmark": "npm run test && npm run benchmark-get-property",
-    "benchmark-get-property": "node benchmark/get-property.js",
-    "build": "npm run clean && cp -rf src/* lib/",
-    "clean": "rm -rf lib/*",
-    "prepublish": "npm run test",
-    "test": "npm run build && tape test/unit/**/*.js | tap-spec"
+    "benchmark": "cd src & for /R %i in (*.benchmark.js) do echo. & echo %i & echo. & babel %i | node",
+    "build": "npm run clean && babel src -d build && babel build -d lib --ignore *.*.js && cp package.json lib & cp README.md lib & cp LICENSE lib",
+    "clean": "rm -rf lib && rm -rf build*",
+    "deploy": "npm run build && npm publish lib/",
+    "test": "cd src & for /R %i in (*.spec.js) do babel %i | node | tap-spec"
   },
   "author": {
     "name": "John Pittman",
@@ -31,9 +30,26 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "benchmark": "^2.1.2",
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "benchmark": "^2.1.3",
     "lodash.get": "^4.4.2",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
-  }
+    "tape": "^4.6.3",
+    "tapes": "^4.1.0"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repoNamespace/repoName.git"
+  },
+  "bugs": {
+    "url": "https://github.com/repoNamespace/repoName/issues"
+  },
+  "homepage": "https://github.com/repoNamespace/repoName#readme",
+  "generator-module": {
+    "global": false
+  },
+  "peerDependencies": {},
+  "dependencies": {}
 }

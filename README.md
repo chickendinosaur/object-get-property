@@ -1,4 +1,6 @@
-Made in response to the amount that I was using lodash.get to update data in a project and needed a better solution. Caches all key chains to avoid garbage and maintain performance.  
+Made in response to the amount that I was using lodash.get to update data in a project and needed a better solution. Ability to cache all key chains to avoid garbage and maintain performance. Backwards compatible with lodash.get.
+
+Passing false as the 3rd param will force no cache.
 
 ---  
 
@@ -16,29 +18,18 @@ gzipped: 2167 bytes
 
 ## Performance  
 
-Test object: 
-```javascript
-let obj = {
-	one: [
-		{
-			three: true
-		},
-		{
-			three: true
-		},
-		{
-			three: true
-		}
-	]
-};
-```
-
 ### @chickendinosaur/object-get-property
-getProperty(obj, 'one.2.three') x 28,143,940 ops/sec  
+
+getProperty(objChain, 'one.2.three' x 21,671,985 ops/sec  
+getProperty(objChain, 'one.2.three', false) x 3,835,008 ops/sec  
+getProperty(arrayChain, 'one[2].three') x 3,774,281 ops/sec  
+getProperty(arrayChain, 'one[2].three', false) x 1,777,284 ops/sec  
 
 ### lodash.get
-lodashGet(obj, 'one[2].three') x 1,278,243 ops/sec  
 
+lodashGet(objChain, 'one.2.three') x 1,134,805 ops/sec  
+lodashGet(arrayChain, 'one.2.three') x 1,274,468 ops/sec  
+lodashGet(arrayChain, 'one[2].three') x 1,184,711 ops/sec  
 ---  
 
 # Getting Started  

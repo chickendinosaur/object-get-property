@@ -27,7 +27,7 @@ SOFTWARE.
 
 const keyChainCache = {};
 
-module.exports = function (object, keyChainString) {
+module.exports = function (object, keyChainString, cacheKeys) {
 	if (object === undefined) {
 		return undefined;
 	}
@@ -36,24 +36,72 @@ module.exports = function (object, keyChainString) {
 		return object;
 	}
 
-	if (keyChainString.constructor === String) {
+	if (cacheKeys === false) {
+		var keyChain = keyChainString.indexOf('[') === -1 ? keyChainString.split('.') : parseKeyChainString(keyChainString);
+	} else {
 		var keyChain = keyChainCache[keyChainString];
-		var i = 0;
-
 		if (keyChain === undefined) {
-			keyChain = keyChainCache[keyChainString] = keyChainString.split('.');
+			keyChain = keyChainCache[keyChainString] = keyChainString.indexOf('[') === -1 ? keyChainString.split('.') : parseKeyChainString(keyChainString);
 		}
-
-		while (i < keyChain.length) {
-			object = object[keyChain[i]];
-
-			if (object === undefined) {
-				break;
-			}
-
-			++i;
-		}
-
-		return object;
 	}
+
+	var i = 0;
+
+	while (i < keyChain.length) {
+		object = object[keyChain[i]];
+
+		if (object === undefined) {
+			break;
+		}
+
+		++i;
+	}
+
+
+	return object;
 };
+
+function parseKeyChainString(keyChainString) {
+	var i = 0;
+	var strQueue = '';
+	var n = keyChainString.length;
+	var currChar = null;
+	var keyChain = [];
+	var beginArrayQueue = false;
+
+	while (i < n) {
+		currChar = keyChainString.charAt(i);
+
+		if (beginArrayQueue === false) {
+			if (currChar === '[' ||
+				currChar === '.') {
+				if (currChar === '[') {
+					beginArrayQueue = true;
+				}
+
+				if (i > 0) {
+					keyChain[keyChain.length] = strQueue;
+					strQueue = '';
+				}
+			} else {
+				strQueue += currChar;
+			}
+		} else if (currChar === ']') {
+			beginArrayQueue = false;
+			keyChain[keyChain.length] = strQueue;
+			strQueue = '';
+
+			if (keyChainString.charAt(i + 1) === '.') {
+				i++;
+			}
+		} else {
+			strQueue += currChar;
+		}
+
+		i++;
+	}
+
+	keyChain[keyChain.length] = strQueue;
+
+	return keyChain;
+}

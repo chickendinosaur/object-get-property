@@ -1,5 +1,3 @@
-/**
-@license
 The MIT License (MIT)
 
 Copyright (c) 2016 John Pittman
@@ -21,41 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
-
-'use strict';
-
-const keyChainCache = {};
-
-module.exports = function (object, keyChainString, cacheKeys) {
-	if (object === undefined) {
-		return undefined;
-	}
-
-	if (keyChainString === undefined) {
-		return object;
-	}
-
-	if (cacheKeys === false) {
-		var keyChain = keyChainString.split('.');
-	} else {
-		var keyChain = keyChainCache[keyChainString];
-		if (keyChain === undefined) {
-			keyChain = keyChainCache[keyChainString] = keyChainString.split('.');
-		}
-	}
-
-	var i = 0;
-
-	while (i < keyChain.length) {
-		object = object[keyChain[i]];
-
-		if (object === undefined) {
-			break;
-		}
-
-		++i;
-	}
-
-	return object;
-};
