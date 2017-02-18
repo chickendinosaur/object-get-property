@@ -41,6 +41,7 @@ test('Class', function (t) {
 
 	t.test('.method', function (t) {
 		t.equal(getObjectProperty(mockObject.objChain, 'one.2.three'), true, 'More than one level deep.');
+		t.equal(getObjectProperty(mockObject.arrayChain, 'one[2].three'), true, 'Array query.');
 		t.equal(getObjectProperty(undefined, 'one.2.three'), undefined, 'Exits on undefined as first param.');
 		t.equal(getObjectProperty(mockObject.objChain, 'one.2.four'), undefined, 'Returns undefined on property not found.');
 
