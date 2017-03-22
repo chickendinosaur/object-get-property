@@ -20,7 +20,7 @@ gzipped: 2167 bytes
 
 ### @chickendinosaur/object-get-property
 
-getProperty(objChain, 'one.2.three' x 21,671,985 ops/sec  
+getProperty(objChain, 'one.2.three') x 21,671,985 ops/sec  
 getProperty(objChain, 'one.2.three', false) x 3,835,008 ops/sec  
 getProperty(arrayChain, 'one[2].three') x 3,774,281 ops/sec  
 getProperty(arrayChain, 'one[2].three', false) x 1,777,284 ops/sec  
